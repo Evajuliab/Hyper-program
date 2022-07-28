@@ -12,14 +12,12 @@
     />
   </head>
   <body>
-    <nav class="navMenu">
-      <a href="">Home</a>
-      <a href="#pagelist">PageList</a>
-      <a href="#pagelist/borderlands">Borderlands</a>
-      <div class="dot"></div>
-    </nav>
-    <h1>The Hyper Program</h1>
+
+
+   
     <div class="search">
+      <a href=""> <h1>The Hyper Program</h1></a>
+     
       <div class="search-container">
         <input
           type="text"
@@ -28,14 +26,15 @@
           class="search-input"
           id="search-bar"
         />
-        <button class="search-btn" id="btnSearch">
-          <i class="fas fa-search"></i>
-        </button>
+      
+         <i class="fas fa-search search-btn" id="btnSearch"></i>
+       
       </div>
     </div>
 
+
     <section id="présentation">
-      <h2 class="mb-3">Welcome,</h2>
+      <h2 class="mb-3" >Welcome,</h2>
       <p>
         The Hyper Programe is the world's premier event for computer and video
         games and related products. At The Hyper Programe, the video game
@@ -97,6 +96,20 @@
  
  <div class="card"> 
  <img src="${article.background_image}"  width="100%" height="50%">
+ <div class="info">
+              
+              <ul>
+                 <li><strong>Released </strong> ${
+                   article.released
+                 } </li>
+                 <li><strong>Genres : </strong>${article.genres.map(
+                   (genre) => genre.name
+                 )}</li>
+                 <li><strong>Rating </strong>${
+                   article.rating
+                 }/5 - ${article.ratings_count}</li>
+              </ul>
+              </div>
        <div id="container">	
    
   
@@ -111,21 +124,7 @@
           <a class="btn" href="#pagedetail/${article.id}">See More</a>
        </div>    
     </div>
-             <div class="info">
-               
-                <ul>
-                   <li><strong>Date de sortie : </strong> ${
-                     article.released
-                   } </li>
-                   <li><strong>Genres : </strong>${article.genres.map(
-                     (genre) => genre.name
-                   )}</li>
-                   <li><strong>Decoration: </strong>${article.editor}</li>
-                   <li><strong>Note/Nombre de votes: </strong>${
-                     article.rating
-                   }/5 - ${article.ratings_count}</li>
-                </ul>
-             </div>
+            
              
           </div>
        

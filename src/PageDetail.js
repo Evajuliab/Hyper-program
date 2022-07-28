@@ -16,11 +16,12 @@ const PageDetail = (argument) => {
        articleDOM.querySelector("p.publisher span").innerHTML = gameData.publishers.map(genre =>  genre.name);
        articleDOM.querySelector("h4.rating strong").innerHTML =  gameData.rating;
        articleDOM.querySelector("h4.rating span").innerHTML =  gameData.ratings_count;
-       articleDOM.querySelector("a.buy").innerHTML =  gameData.website;
+
        document.querySelector("div.image-detail").style.background =  `url(${gameData.background_image})`;
       document.querySelector("div.image-detail").style.backgroundSize = `cover`;
       document.querySelector("div.image-detail").style.height = `400px`;
-      
+      document.querySelector('a#website').setAttribute("href",gameData.website);
+      document.querySelector('a.buy').setAttribute("href", gameData.website)
 
      };
 
@@ -48,7 +49,9 @@ const PageDetail = (argument) => {
      pageContent.innerHTML = `
        <section class="page-detail">
        <div class="image-detail"><a id="website" href="" target="_blank">Check Website  ></a></div>
-         <div class="article">
+         
+       <div class="article">
+        
         
            <h1 class="title"></h1>
            <h4 class="rating"><strong></strong>/5 - <span></span> votes</h4>
@@ -64,7 +67,7 @@ const PageDetail = (argument) => {
            <p class="tags"><strong>Tags</strong></br><span></span></p></div>
            
            <h1 class="title">BUY</h1>
-           <a href="url" class="buy"></a>
+           <a href="" class="buy">Acheter <i class="fa-solid fa-cart-shopping"></i></a>
            <h1>TRAILER</h1>
            <div class="trailer"></div>
            <h1>SCREENSHOTS</h1>
@@ -110,7 +113,7 @@ if(responseData.results.length > 0){
 responseData.results.map(article => 
   result.insertAdjacentHTML('afterbegin',`
   <div class="card"> 
-  <img src="${article.background_image}"  width="100%" height="60%">
+  <img src="${article.background_image}"  width="100%" height="75%"%">
         <div id="container">	
            <div class="product-details">
               <h3>${article.name}</h3>
@@ -146,7 +149,7 @@ responseData.results.map(article =>
               </div>`
 
 ) )} else{result.insertAdjacentHTML('afterbegin',`
-<div class="card"> 
+
 <p>Aucun Trailer disponible</p>
 `)} })}
 

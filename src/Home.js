@@ -11,6 +11,7 @@ const Home = (argument = '') => {
 
   let landingPageArgument = `&dates=2022-07-26,2023-07-26&ordering=-rating&page_size=${(numberOfPages += 9)}`;
   PageList(landingPageArgument);
+  
    
    searchBtn.addEventListener('click', () => {
     document.getElementById("présentation").style.display = "none";
