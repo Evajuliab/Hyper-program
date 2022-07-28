@@ -1,0 +1,351 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+$black-color: black;
+$grey-color: grey;
+$white-grey: rgba(255, 255, 255, 0.90);
+$background-color: rgba(25,25,25,255);
+$title-color:#d30933;
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Regular.ttf');
+}
+
+
+h1{
+  color: $title-color;
+  font-weight: bold;
+}
+
+body {
+  padding: 50px;
+  margin:50px;
+  color:#eee;
+  background-color: $background-color;
+}
+.navMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  justify-content: center;
+  top: 0%;
+}
+
+.navMenu a {
+  padding: 10px;
+  margin-right: 90px;
+  color: $grey-color;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 80px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:hover {
+  color: $white-grey;
+}
+
+img {
+  padding-bottom: 20px;
+}
+
+.card  {
+  max-width: 400px;
+  height: 700px;
+  background-color: $background-color;
+  color: #eee;
+  margin: 30px 0px 0px 0px;
+  opacity: 1;
+  transition: 0.3s;
+  
+}
+
+.card.img :hover{
+  opacity:0.5
+}
+
+a, a:visited {
+	text-decoration: none;
+	position: relative;
+	color: $white-grey;
+	
+	&:after {
+		content: '';
+		height: 3px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: $white-grey;
+		transition: 0.2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
+	
+	&.block {
+		display: block;
+		padding: 0.5em;
+		
+		&:hover {
+			background: #eee;
+		}
+	}
+}
+
+.main-container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 450px);
+  place-content: center
+
+}
+
+.card-img-top {
+  width: 100%;
+  object-fit: cover;
+}
+
+.info {
+  display: none;
+}
+
+
+#container{
+	text-align: left;
+	border-radius: 5px;
+	overflow: hidden;
+
+}
+
+#show-more{
+display: block;
+margin: auto;
+height: 50px;
+min-width: 200px;
+color:rgba(255, 255, 255, 0.90);
+background-color: $title-color;
+font-weight: bold;
+padding-left: 30px;
+padding-right: 30px;
+border:none;
+}
+
+#results-platform{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 450px);
+  place-content: center
+}
+
+#selector {
+  display: block;
+  height: 50px;
+  max-width: 200px;
+  color:rgba(255, 255, 255, 0.90);
+  background-color: $title-color;
+  font-weight: bold;
+  padding-top: 12px;
+  padding-left: 10px;
+  border:none;
+  margin-top: 30px;
+}
+
+#platform {
+  background-color: $title-color;
+  color:white;
+  border: none;
+  font-weight: bold;
+}
+
+.platform {
+  margin: auto;
+  padding: 30px;
+}
+
+#website{
+  display: block;
+  height: 50px;
+  max-width: 170px;
+  color:rgba(255, 255, 255, 0.90);
+  background-color: $title-color;
+  font-weight: bold;
+  padding-top: 12px;
+  padding-left: 10px;
+  border:none;
+  margin-top: 30px;
+}
+
+.image-detail {
+  margin-bottom: 40px;
+}
+
+.details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 450px);
+  place-content: left
+}
+
+.details-sreenshot{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 450px);
+  place-content: center;
+  gap: 20px;
+}
+.similar-games{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 450px);
+  place-content: center
+}
+// .product-details {
+// 	position: relative;
+// 	text-align: left;
+// 	overflow: hidden;
+// 	padding: 30px;
+// 	height: 100%;
+// 	float: left;
+// 	width: 40%;
+// }
+
+// #container .product-details h1{
+// 	display: inline-block;
+// 	position: relative;
+// 	font-size: 30px;
+// 	color: #344055;
+// 	margin: 0;	
+// }
+
+// #container .product-details h1:before{
+// 	position: absolute;
+// 	content: '';
+// 	right: 0%; 
+// 	top: 0%;
+// 	transform: translate(25px, -15px);
+// 	font-family: 'Roboto';
+// 	display: inline-block;
+// 	background: #ffe6e6;
+// 	border-radius: 5px;
+// 	font-size: 14px;
+// 	padding: 5px;
+// 	color: white;
+// 	margin: 0;
+// 	animation: chan-sh 6s ease infinite;
+
+// }
+
+// #container .product-details > p {
+//   font-family: 'Roboto';
+// 	text-align: center;
+// 	font-size: 18px;
+// 	color: #7d7d7d;
+	
+// }
+// .control{
+// 	position: absolute;
+// 	bottom: 5%;
+// 	left: 22.8%;
+	
+// }
+.btn {
+	background:  #d30c34;
+  width: 200px;
+  height: 2rem;
+  overflow: hidden;
+	cursor: pointer;
+	outline: none;
+	color: #eee;
+
+}
+
+
+
+
+// .product-image {
+// 	transition: all 0.3s ease-out;
+// 	display: inline-block;
+// 	position: relative;
+// 	overflow: hidden;
+// 	height: 100%;
+// 	float: right;
+// 	width: 45%;
+// 	display: inline-block;
+// }
+
+// #container img {width: 100%;height: 100%;}
+
+// .info {
+//     background: rgba(27, 26, 26, 0.9);
+//     font-family: 'Roboto';
+//     transition: all 0.3s ease-out;
+//     transform: translateX(-100%);
+//     position: absolute;
+//     line-height: 1.8;
+//     text-align: left;
+//     font-size: 105%;
+//     cursor: no-drop;
+//     color: #FFF;
+//     height: 100%;
+//     width: 100%;
+//     left: 0;
+//     top: 0;
+// }
+
+// .info h2 {text-align: center}
+// .product-image:hover .info{transform: translateX(0);}
+
+// .info ul li{transition: 0.3s ease;}
+// .info ul li:hover{transform: translateX(50px) scale(1.3);}
+
+// .product-image:hover img {transition: all 0.3s ease-out;}
+// .product-image:hover img {transform: scale(1.2, 1.2);}
+
+
+.search-container{
+  width: 20%;
+  background: $background-color;
+  border: solid 1px $white-grey;
+  height: 30px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+.search-container:hover > .search-input{
+  width: 400px;
+}
+
+.search-container .search-input{
+  background: transparent;
+  border: none;
+  outline:none;
+  width: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.6s;
+
+}
+
+.search-container .search-btn .fas{
+  color: $background-color;
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

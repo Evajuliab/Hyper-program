@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/bundle.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navMenu">
+      <a href="">Home</a>
+      <a href="#pagelist">PageList</a>
+      <a href="#pagelist/borderlands">Borderlands</a>
+      <div class="dot"></div>
+    </nav>
+    <h1>The Hyper Program</h1>
+    <div class="search">
+      <div class="search-container">
+        <input
+          type="text"
+          name="search"
+          placeholder="Find a game.."
+          class="search-input"
+          id="search-bar"
+        />
+        <button class="search-btn" id="btnSearch">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <section id="présentation">
+      <h2 class="mb-3">Welcome,</h2>
+      <p>
+        The Hyper Programe is the world's premier event for computer and video
+        games and related products. At The Hyper Programe, the video game
+        industry's top talent pack the Los Angeles Convention Center, connecting
+        tens of thousands of the best, brightest, and most innovative in the
+        interactive entertainment industry like me. For three exciting days,
+        leading-edge companies, groundbreaking new technologies, and
+        never-before-seen products will be showcased. The Hyper Programe
+        connects you with both new and existing partners, industry executives,
+        gamers ans social influencers providing unprecedented exposure.
+      </p>
+    </section>
+
+    <div id="selector">
+      <label>Plateform : </label>
+      <select id="platform" onchange="getSelectValue();">
+        <option value="">Any</option>
+        <option value="1">PC</option>
+        <option value="3">Xbox</option>
+        <option value="4">iOS</option>
+        <option value="5">MacOS</option>
+        <option value="6">Linux</option>
+        <option value="7">Nintendo</option>
+        <option value="8">Android</option>
+      </select>
+    </div>
+
+    <div id="results-platform"></div>
+
+    <script>
+      function getSelectValue() {
+        let arrayImg = [
+          "",
+          '<i class="fab fa-windows" style="font-size:30px"></i>',
+          '<i class="fab fa-playstation" style="font-size:30px"></i>',
+          '<i class="fab fa-xbox" style="font-size:30px"></i>',
+          '<i class="fab fa-app-store-ios" style="font-size:30px"></i>',
+          '<i class="fab fa-apple" style="font-size:30px"></i>',
+          '<i class="fab fa-linux" style="font-size:30px"></i>',
+          '<i class="fab fa-nintendo-switch" style="font-size:30px"></i>',
+          '<i class="fab fa-android" style="font-size:30px"></i>',
+        ];
+
+        let API_KEY = "1d8ba5e5d48647df89d8ab380d4ffda8";
+        let selectedValue = document.getElementById("platform").value;
+        let result = document.getElementById("results-platform");
+
+        fetch(
+          `https://api.rawg.io/api/games?key=${API_KEY}&platforms=${selectedValue}`
+        )
+          .then((response) => response.json())
+          .then((responseData) => {
+            console.log(responseData.results);
+
+            responseData.results.map((article) =>
+              result.insertAdjacentHTML(
+                "afterbegin",
+                `
+ 
+ <div class="card"> 
+ <img src="${article.background_image}"  width="100%" height="50%">
+       <div id="container">	
+   
+  
+          <div class="product-details">
+             <h3>${article.name}</h3>
+              
+ 
+    <div class="platform"> <div>${article.parent_platforms
+      .map((e) => arrayImg[e.platform.id])
+      .join(" ")}</div></div>
+          <div class="control">
+          <a class="btn" href="#pagedetail/${article.id}">See More</a>
+       </div>    
+    </div>
+             <div class="info">
+               
+                <ul>
+                   <li><strong>Date de sortie : </strong> ${
+                     article.released
+                   } </li>
+                   <li><strong>Genres : </strong>${article.genres.map(
+                     (genre) => genre.name
+                   )}</li>
+                   <li><strong>Decoration: </strong>${article.editor}</li>
+                   <li><strong>Note/Nombre de votes: </strong>${
+                     article.rating
+                   }/5 - ${article.ratings_count}</li>
+                </ul>
+             </div>
+             
+          </div>
+       
+       </div>
+       
+          `
+              )
+            );
+          });
+      }
+      getSelectValue();
+    </script>
+
+    <div id="landing-page"></div>
+    <section id="pageContent"></section>
+    <section class="main-container"></section>
+
+    <button id="show-more">Show more</button>
+
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>
